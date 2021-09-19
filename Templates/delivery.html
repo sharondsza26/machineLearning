@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Delivery Time Prediction</title>
+
+  <!-- CSS  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>-->
+
+
+  <style>
+    body
+  {
+    border: 10px solid black;
+    text-align: center;
+    color: white;
+    
+    background-image: url("ML/food.jpeg");
+    background-size: cover;
+    background-color : light pink;
+    height: 100%;
+   /* overflow: hidden;*/
+     
+    background-size:cover;
+    background-attachment:fixed;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    margin-right: 400px;
+    margin-left: 390px;
+    font-size: 150%
+   
+    
+  }
+  
+  h1
+  {
+    text-align: center;
+    color: black;
+    background-color: rgb(235, 191, 110);
+    font: size 2px;
+    
+  }
+  h2{
+    text-align: top;
+  }
+  div {
+    
+    font-weight: bold;
+    color: black;
+    background-color:#ffe6cc;
+    padding: 10px 0px 10px 20px;
+   
+  }
+  .section {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+  
+  .row {
+    border: 5px solid black;
+    margin-left: auto;
+    margin-right: 60px;
+
+  }
+ 
+  .btn-large {    
+    display: inline-block;
+    background: rgb(22, 8, 5);
+    color: white;
+    padding: 18px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+  }
+  
+    </style>
+</head>
+
+<body>
+  <div class="section" id="index-banner">
+    <div class="container">
+      <h1 class="header center black-text"><b>Delivery Time Prediction</b></h1>
+      <h2 class="header col s12 light"><i>Estimate the delivery time</i></h2>
+      <!-- <div class="row center">
+        <h2 class="header col s12 light"><i>Estimate the delivery time</i></h2>
+      </div> -->
+
+    <div class="row1">
+    <form action = "{{url_for('predict')}}" method="POST" class="col s12">
+      <div class="row">
+
+      
+        <!--Restaurant-->
+        <div class="input-field col s4">
+
+            <label for="Restaurant"><b>Restaurant Outlet: </b></label>
+              <br>
+            <select id="Restaurant" name="Restaurant">
+                  <option value="Silver Coin Restaurant+Borivali">Silver Coin Restaurant,Borivali</option>
+                  <option value="Pizza Hut+Kandivali">Pizza Hut,Kandivali West</option>
+                  <option value="Joeys Pizza+Malad">Joey's Pizza,Malad</option>
+                  <option value="Farzi Cafe+Goregaon">Farzi Cafe,Goregaon</option>
+                  <option value="Persia Darbar+Jogeshwari">Persia Darbar,Jogeshwari</option>
+                  <option value="Peshawri_ITC Maratha+Andheri">Peshawri_ITC Maratha,Andheri</option>
+                </select>
+            </div>
+
+          <!--Location-->
+          <div class="input-field col s4">
+
+            <label for="Location"><b>Please select a Delivery Location : </b></label>
+              <br>
+              <select id="Location" name="Location">
+                  <option value="Borivali">Borivali</option>
+                  <option value="Kandivali">Kandivali</option>
+                  <option value="Malad">Malad</option>
+                  <option value="Goregaon">Goregaon</option>
+                  <option value="Jogeshwari">Jogeshwari</option>
+                  <option value="Andheri">Andheri</option>
+                </select>
+            </div>
+
+            <!--Cuisines-->
+            <div class="input-field col s4">
+
+                <label for="Cuisines"><b>Food Items </b></label> <br>
+                <select id="Cuisines" name="Cuisines">
+                  <option value="Starters">Starters</option>
+                  <option value="Main_Course">Main_Course</option>
+                  <option value="Pizza">Pizza</option>
+                  <option value="Pasta">Pasta</option>
+                  <option value="Salad">Salad</option>
+                  <option value="Biryani">Biryani</option>
+                  <option value="Desserts">Desserts</option>
+                  <option value="Beverage">Beverage</option>
+                </select>
+                  <br>
+            </div>
+      </div>
+
+      <div class="row center">
+
+          <button type="submit" value="submit" class="btn-large waves-effect waves-light orange">Predict Time</button>
+      </div>
+    </form>
+
+      </div>
+        <br>
+          {{pred}} 
+        <br>
+    </div> 
+
+  </div>
+  </div>
+  </div>
+
+
+  </body>
+</html>
